@@ -13,9 +13,9 @@ if [ $# -eq 0 ]
 fi
 
 export LW_PROFILE=$LW_PROFILE
-echo "Lacework Vulnerability Exception for a single host (v0.3)"
+echo "Lacework Vulnerability Exception for a single host (v0.4)"
 echo "Get the current CVEs for the Host $HOST"
-getallvulnerabilities=$(lacework api post api/v2/Vulnerabilities/Hosts/search -d '{ "filters": [ { "field": "severity", "expression": "in", "values": ["Medium", "Critical", "High", "Low", "Info"] }, { "field": "fixInfo.fix_available", "expression": "eq", "value": "1" }, { "field": "evalCtx.hostname", "expression": "eq", "value": "'$HOST'" } ], "returns": [ "vulnId" ] }')
+getallvulnerabilities=$(lacework api post api/v2/Vulnerabilities/Hosts/search -d '{ "filters": [ { "field": "severity", "expression": "in", "values": ["Medium", "Critical", "High", "Low", "Info", "Unknown"] }, { "field": "fixInfo.fix_available", "expression": "eq", "value": "1" }, { "field": "evalCtx.hostname", "expression": "eq", "value": "'$HOST'" } ], "returns": [ "vulnId" ] }')
 lengthofvulnerabilities=$(echo $getallvulnerabilities | jq 'length')
 if [ $lengthofvulnerabilities -eq 0 ]; then echo "Host not found inside the Lacework environment"; exit 1; else echo "Host found inside the Lacework environment"; fi
 vulnerabilities=$(echo $getallvulnerabilities | jq -r '.data | map(.vulnId) | unique | @csv')

@@ -15,3 +15,4 @@ The Exception will have a filter applied to the host, is not limited to a specif
 ## Updates
 - v02: Adding capability to detect if the host exists, if a vulnerability exception already exists and if yes update the existing one instead of creating a new one.
 - v03: Adding capability to filter for unique CVEs so every CVE in the exception list is only used once.
+- v04: Also adding capability to add CVEs with status Unknown.
