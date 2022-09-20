@@ -11,7 +11,7 @@ The current script creates a simple Vulnerability Exception for all CVEs found f
 - Info CVEs with a fix
 The Exception will have a filter applied to the host, is not limited to a specific time. The current exception reason is "Fix Pending".
 ## Current limitations (room for improvement)
-- You might see more CVEs applied as filter as you can see inside the UI view. This is due to that a CVE can be affecting multiple packages.
-- The script is in the current version more or less static. We try to make it more optional.
+- The script is in the current version more or less static for all vulnerabilites where a security fix exists. We try to make it more optional.
 ## Updates
 v02: Adding capability to detect if the host exists, if a vulnerability exception already exists and if yes update the existing one instead of creating a new one.
+v03: Adding capability to filter for unique CVEs so every CVE in the exception list is only used once.
